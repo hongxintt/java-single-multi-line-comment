@@ -1,9 +1,13 @@
 package com.google.common.escape;
 
 public abstract class ArrayBasedUnicodeEscaper {
-    /* The first code point in the safe range. */
+    /* 
+     * The first code point in the safe range.
+     */
     private int safeMin;
-    /* The last code point in the safe range. */
+    /* 
+     * The last code point in the safe range.
+     */
     private int safeMax;
 
     private char safeMinChar;
@@ -38,7 +42,7 @@ public abstract class ArrayBasedUnicodeEscaper {
         return s;
     }
 
-    // Overridden for performance.
+    /* Overridden for performance. */
     protected final int nextEscapeIndex(CharSequence csq, int index, int end) {
         return index;
     }
