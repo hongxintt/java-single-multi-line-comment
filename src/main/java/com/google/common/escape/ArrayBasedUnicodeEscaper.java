@@ -1,11 +1,15 @@
 package com.google.common.escape;
 
 public abstract class ArrayBasedUnicodeEscaper {
-    /* The first code point in the safe range.
-    private int safeMin;
-     The last code point in the safe range.
-    private int safeMax;
+    /*
+     The first code point in the safe range.
     */
+    private int safeMin;
+    /*
+     The last code point in the safe range.
+    */
+    private int safeMax;
+
     private char safeMinChar;
     private char safeMaxChar;
 
@@ -24,7 +28,7 @@ public abstract class ArrayBasedUnicodeEscaper {
          This approach does mean that we break out of the fast path code in cases
          where we don't strictly need to, but this situation will almost never
          occur in practice.
-         */
+        */
         if (safeMin >= Character.MIN_HIGH_SURROGATE) {
             this.safeMinChar = Character.MAX_VALUE;
             this.safeMaxChar = 0;
@@ -34,6 +38,7 @@ public abstract class ArrayBasedUnicodeEscaper {
         }
     }
 
+    
      // This is overridden to improve performance. Rough benchmarking shows that this almost doubles
      // the speed when processing strings that do not require any escaping.
      
