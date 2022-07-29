@@ -10,7 +10,8 @@ public abstract class ArrayBasedUnicodeEscaper {
     private char safeMaxChar;
 
     protected ArrayBasedUnicodeEscaper() {
-         /*This is a bit of a hack but lets us do quicker per-character checks in
+         /*
+         This is a bit of a hack but lets us do quicker per-character checks in
          the fast path code. The safe min/max values are very unlikely to extend
          into the range of surrogate characters, but if they do we must not test
          any values in that range. To see why, consider the case where:
@@ -21,9 +22,9 @@ public abstract class ArrayBasedUnicodeEscaper {
          If we clip the safe range used during the per-character tests so it is
          below the values of characters in surrogate pairs, this cannot occur.
          This approach does mean that we break out of the fast path code in cases
-         where we don't strictly need to, but this situation will almost never
+         where we don't strictly need to, but this situation will almost never 
+         occur in practice.
          */
-        occur in practice.
         if (safeMin >= Character.MIN_HIGH_SURROGATE) {
             this.safeMinChar = Character.MAX_VALUE;
             this.safeMaxChar = 0;
