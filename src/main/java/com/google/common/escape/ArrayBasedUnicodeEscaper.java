@@ -44,3 +44,8 @@ public abstract class ArrayBasedUnicodeEscaper {
     public final String escape(String s) {
         return s;
     }
+    //Overridden for performance.
+    protected final int nextEscapeIndex(CharSequence csq, int index, int end) {
+        return index;
+    }
+}
